@@ -170,12 +170,15 @@ git = 'https://github.com/paritytech/substrate.git'
 branch = 'rococo-v1'
 version = '3.0.0'
 
-[dependencies.template]
+[dependencies.pallet-miner]
 default-features = false
-package = 'pallet-template'
-path = '../pallets/template'
-version = '3.0.0'
+package = 'pallet-miner'
+path = '../../pallet/pallet-miner'
 
+[dependencies.pallet-power]
+default-features = false
+package = 'pallet-power'
+path = '../../pallet/pallet-power'
 
 # Cumulus dependencies
 [dependencies.parachain-info]
@@ -253,6 +256,8 @@ std = [
 	"pallet-randomness-collective-flip/std",
 	"pallet-timestamp/std",
 	"pallet-sudo/std",
+	"pallet-miner/std",
+	"pallet-power/std",
 	"pallet-transaction-payment/std",
 	"parachain-info/std",
 	"cumulus-pallet-parachain-system/std",
