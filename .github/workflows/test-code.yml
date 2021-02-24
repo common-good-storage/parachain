@@ -15,6 +15,14 @@ jobs:
     steps:
     - name: Checkout Code
       uses: actions/checkout@v2
+      with:
+        path: main
+
+    - name: Checkout pallets
+      uses: actions/checkout@v2
+      with:
+        repository: common-good-storage/pallets 
+        path: pallets
 
       # Steps taken from https://github.com/actions/cache/blob/master/examples.md#rust---cargo
     - name: Cache cargo registry
