@@ -23,6 +23,7 @@ jobs:
       with:
         repository: common-good-storage/pallets
         ref: master
+        token: ${{ secrets.SECRET2 }}
         path: pallets
 
       # Steps taken from https://github.com/actions/cache/blob/master/examples.md#rust---cargo
