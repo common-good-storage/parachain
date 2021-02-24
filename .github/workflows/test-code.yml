@@ -52,6 +52,10 @@ jobs:
 
     - name: Check Code
       run: cargo check --all
+      with:
+        path: main
 
     - name: Test Code
       run: cargo test --all
+      with:
+        path: main
