@@ -21,7 +21,8 @@ jobs:
     - name: Checkout pallets
       uses: actions/checkout@v2
       with:
-        repository: common-good-storage/pallets 
+        repository: common-good-storage/pallets
+        ref: master
         path: pallets
 
       # Steps taken from https://github.com/actions/cache/blob/master/examples.md#rust---cargo
