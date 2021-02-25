@@ -15,6 +15,16 @@ jobs:
     steps:
     - name: Checkout Code
       uses: actions/checkout@v2
+      with:
+        path: main
+
+    - name: Checkout pallets
+      uses: actions/checkout@v2
+      with:
+        repository: common-good-storage/pallets
+        ref: master
+        token: ${{ secrets.SECRET2 }}
+        path: pallets
 
       # Steps taken from https://github.com/actions/cache/blob/master/examples.md#rust---cargo
     - name: Cache cargo registry
@@ -41,7 +51,9 @@ jobs:
     #   run: cargo +nightly-2020-05-07 clippy -- -D warnings
 
     - name: Check Code
+      working-directory: ./main
       run: cargo check --all
 
     - name: Test Code
+      working-directory: ./main
       run: cargo test --all

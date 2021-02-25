@@ -4126,6 +4126,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "pallet-common"
+version = "0.1.0"
+dependencies = [
+ "frame-support",
+ "parity-scale-codec",
+ "sp-runtime",
+]
+
+[[package]]
 name = "pallet-democracy"
 version = "3.0.0"
 source = "git+https://github.com/paritytech/substrate.git?branch=rococo-v1#e03ca38d45f438932ec92bf69a40b6b16b6ec643"
@@ -4240,6 +4249,18 @@ dependencies = [
 ]
 
 [[package]]
+name = "pallet-miner"
+version = "0.1.0"
+dependencies = [
+ "frame-support",
+ "frame-system",
+ "pallet-common",
+ "parity-scale-codec",
+ "sp-runtime",
+ "sp-std",
+]
+
+[[package]]
 name = "pallet-multisig"
 version = "3.0.0"
 source = "git+https://github.com/paritytech/substrate.git?branch=rococo-v1#e03ca38d45f438932ec92bf69a40b6b16b6ec643"
@@ -4280,6 +4301,17 @@ dependencies = [
  "serde",
  "sp-runtime",
  "sp-staking",
+ "sp-std",
+]
+
+[[package]]
+name = "pallet-power"
+version = "0.1.0"
+dependencies = [
+ "frame-support",
+ "frame-system",
+ "pallet-common",
+ "parity-scale-codec",
  "sp-std",
 ]
 
@@ -4418,19 +4450,6 @@ dependencies = [
  "sp-io",
  "sp-runtime",
  "sp-std",
-]
-
-[[package]]
-name = "pallet-template"
-version = "3.0.0"
-dependencies = [
- "frame-support",
- "frame-system",
- "parity-scale-codec",
- "serde",
- "sp-core",
- "sp-io",
- "sp-runtime",
 ]
 
 [[package]]
@@ -4632,9 +4651,10 @@ dependencies = [
  "frame-system-rpc-runtime-api",
  "hex-literal 0.3.1",
  "pallet-balances",
+ "pallet-miner",
+ "pallet-power",
  "pallet-randomness-collective-flip",
  "pallet-sudo",
- "pallet-template",
  "pallet-timestamp",
  "pallet-transaction-payment",
  "pallet-transaction-payment-rpc-runtime-api",
