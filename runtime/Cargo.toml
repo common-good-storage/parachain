@@ -173,12 +173,12 @@ version = '3.0.0'
 [dependencies.pallet-miner]
 default-features = false
 package = 'pallet-miner'
-path = '../../pallet/pallet-miner'
+path = '../../pallets/pallet-miner'
 
 [dependencies.pallet-power]
 default-features = false
 package = 'pallet-power'
-path = '../../pallet/pallet-power'
+path = '../../pallets/pallet-power'
 
 # Cumulus dependencies
 [dependencies.parachain-info]

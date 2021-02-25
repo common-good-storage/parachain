@@ -51,11 +51,9 @@ jobs:
     #   run: cargo +nightly-2020-05-07 clippy -- -D warnings
 
     - name: Check Code
+      working-directory: ./main
       run: cargo check --all
-      with:
-        path: main
 
     - name: Test Code
+      working-directory: ./main
       run: cargo test --all
-      with:
-        path: main
