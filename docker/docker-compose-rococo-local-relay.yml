@@ -1,0 +1,60 @@
+version: '3'
+services:
+  # This builds the chain-spec to be used in other validators - Alice and Bob
+  export-chain-spec:
+    image: parity/rococo:rococo-v1-0.8.28-99747002-09210fb6
+    volumes:
+      - ./chainspec:/polkadot
+    entrypoint: /bin/sh -c "/usr/local/bin/polkadot build-spec --chain rococo-local --raw --disable-default-bootnode > /polkadot/rococo_local.json"
+
+  validator-alice:
+    image: parity/rococo:rococo-v1-0.8.28-99747002-09210fb6
+    ports:
+      - '30666:30666'
+      - '6644:6644'
+      - '6633:6633'
+    volumes:
+      - ./chainspec:/chainspec
+      - validator_alice:/data
+    command:
+      - --chain=/chainspec/rococo_local.json
+      - --port=30666
+      - --ws-port=6644
+      - --rpc-port=6633
+      - --rpc-cors=all
+      - --unsafe-rpc-external
+      - --unsafe-ws-external
+      - --validator
+      - --alice
+      - --no-prometheus
+      - --no-telemetry
+    depends_on:
+      - export-chain-spec 
+
+  validator-bob:
+    image: parity/rococo:rococo-v1-0.8.28-99747002-09210fb6
+    ports:
+      - '30555:30555'
+      - '5544:5544'
+      - '5533:5533'
+    volumes:
+      - ./chainspec:/chainspec
+      - validator_bob:/data
+    command:
+      - --chain=/chainspec/rococo_local.json
+      - --port=30555
+      - --ws-port=5544
+      - --rpc-port=5533
+      - --rpc-cors=all
+      - --unsafe-rpc-external
+      - --unsafe-ws-external
+      - --validator
+      - --bob
+      - --no-prometheus
+      - --no-telemetry
+    depends_on:
+      - export-chain-spec 
+
+volumes: 
+  validator_alice:
+  validator_bob:
