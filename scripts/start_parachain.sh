@@ -3,7 +3,8 @@
 # this script runs the parachain-collator after fetching
 # appropriate bootnode IDs
 
-set -e
+set -eu
+set -o pipefail
 
 DIRECTORY='./tmp'
 if [ ! -d "$DIRECTORY" ]; then

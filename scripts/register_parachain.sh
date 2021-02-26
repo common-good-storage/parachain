@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-set -e
+set -eu
+set -o pipefail
 
 # This exports genesis state for default chain = local
 ./target/release/parachain-collator export-genesis-state --parachain-id=100 ./tmp/parachain_gs
